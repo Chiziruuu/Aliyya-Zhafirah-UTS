@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aliyya Zhafirah – Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body class="profile-page">
+
+  <!-- Decorative bubbles -->
+  <div class="bubble b1"></div>
+  <div class="bubble b2"></div>
+  <div class="bubble b3"></div>
+  <div class="bubble b4"></div>
+  <div class="bubble b5"></div>
+  <div class="star s1">✦</div>
+  <div class="star s2">✦</div>
+  <div class="star s3">✧</div>
+  <div class="star s4">✦</div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-brand">🌸 Aliyya</div>
+    <ul class="nav-links">
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a href="{{ url_for('profile') }}" class="active">Profile</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Profile Content -->
+  <main class="profile-main">
+    <div class="profile-header fade-in">
+      <div class="avatar-wrap">
+        <img src="{{ url_for('static', filename='images/foto.jpg') }}" alt="Foto Aliyya Zhafirah" class="avatar" />
+        <div class="avatar-ring"></div>
+      </div>
+      <h1 class="profile-name">{{ data.nama }}</h1>
+      <p class="profile-tagline">{{ data.prodi }} · {{ data.angkatan }}</p>
+    </div>
+
+    <div class="cards-grid">
+
+      <!-- Data Diri -->
+      <div class="card slide-up">
+        <div class="card-header">
+          <span class="card-icon">🪪</span>
+          <h2>Data Diri</h2>
+        </div>
+        <ul class="info-list">
+          <li><span class="label">Nama</span><span class="value">{{ data.nama }}</span></li>
+          <li><span class="label">NIM</span><span class="value">{{ data.nim }}</span></li>
+          <li><span class="label">Kelas</span><span class="value">{{ data.kelas }}</span></li>
+          <li><span class="label">Prodi</span><span class="value">{{ data.prodi }}</span></li>
+          <li><span class="label">Kampus</span><span class="value">{{ data.kampus }}</span></li>
+          <li><span class="label">Angkatan</span><span class="value">{{ data.angkatan }}</span></li>
+          <li><span class="label">Email</span><span class="value email-val">{{ data.email }}</span></li>
+          <li><span class="label">Domisili</span><span class="value">{{ data.domisili }}</span></li>
+        </ul>
+      </div>
+
+      <!-- Tentang Saya -->
+      <div class="card slide-up delay-1">
+        <div class="card-header">
+          <span class="card-icon">💡</span>
+          <h2>Tentang Saya</h2>
+        </div>
+        <p class="about-text">{{ data.tentang }}</p>
+      </div>
+
+      <!-- Hobi -->
+      <div class="card slide-up delay-2">
+        <div class="card-header">
+          <span class="card-icon">🎯</span>
+          <h2>Hobi</h2>
+        </div>
+        <ul class="hobi-list">
+          {% for h in data.hobi %}
+          <li>
+            <span class="hobi-dot"></span>
+            {{ h }}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Cita-cita -->
+      <div class="card slide-up delay-3">
+        <div class="card-header">
+          <span class="card-icon">🚀</span>
+          <h2>Cita-Cita</h2>
+        </div>
+        <p class="cita-text">{{ data.cita_cita }}</p>
+        <div class="cita-badges">
+          <span class="badge">Embedded Engineer</span>
+          <span class="badge">Automation Engineer</span>
+        </div>
+      </div>
+
+    </div><!-- /cards-grid -->
+
+    <div class="back-wrap fade-in-up">
+      <a href="{{ url_for('home') }}" class="btn-back">← Kembali ke Home</a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Made with 💚 & 🌸 by Aliyya Zhafirah &nbsp;|&nbsp; PCR 2024</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
